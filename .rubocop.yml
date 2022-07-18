@@ -1,0 +1,29 @@
+require:
+  - rubocop-rails
+AllCops:
+  TargetRubyVersion: 3.0.3
+  Exclude:
+    - "config.ru"
+    - "bin/**"
+    - "lib/**"
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+Rails:
+  Enabled: true
+
+AsciiComments:
+  Enabled: true
+
+Documentation:
+  Enabled: true
+
+ClassAndModuleChildren:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+#Windowsの改行コードを変更
+Style/EndOfLine:
+  EnforcedStyle: crlf
