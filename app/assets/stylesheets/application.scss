@@ -14,3 +14,12 @@
  *= require_self
  */
 @import 'bulma';
+@import './header.scss';
+
+html {
+  height: 100%;
+}
+body {
+  background-color: #f1f7fc;
+  height: 100%;
+}
