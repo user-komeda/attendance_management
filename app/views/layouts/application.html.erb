@@ -11,6 +11,19 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </body>
+    <header class="header">
+      <h2 class="h2">
+        <%= link_to '勤怠管理システム', root_path, class: 'link' %>
+      </h2>
+      <div class="ml-80"></div>
+      <%= link_to  "新規登録", new_user_registration_path, class: 'link'%>
+      <%= link_to  "ログイン", new_user_session_path, class: 'link'%>
+      <%# <%= link_to  "ログアウト", root_path,method: :delete, class: 'link'%>
+      <% if request.path=="/" %>
+      <% else %>
+      <% end %>
+    </div>
+  </header>
+  <%= yield %>
+</body>
 </html>
