@@ -1,6 +1,7 @@
 require:
   - rubocop-rails
 AllCops:
+  NewCops: enable
   TargetRubyVersion: 3.0.3
   Exclude:
     - "config.ru"
@@ -22,7 +23,7 @@ ClassAndModuleChildren:
   Enabled: true
 
 Style/FrozenStringLiteralComment:
-  Enabled: true
+  Enabled: false
 
 #Windowsの改行コードを変更
 Style/EndOfLine:

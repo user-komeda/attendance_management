@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :attendances, path: 'users/:id/attendances'
+  resources :attendances, path: 'users/:id/attendances', except: [:show, :destroy]
 
 
 

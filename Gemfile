@@ -43,11 +43,14 @@ group :development do
   # Display performance information such as SQL time and flame graphs for each request in your browser.
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'brakeman', require: false
+  gem 'htmlbeautifier'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rails_best_practices'
   gem 'reek'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
+  gem 'solargraph'
+  gem 'solargraph-rails'
 end
 
 group :test do
