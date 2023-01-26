@@ -78,10 +78,14 @@
             </tr>
           </thead>
           <tbody>
-            <% @attendances.each do |attendance| %>
+            <% @attendances&.each do |attendance| %>
+              <% @attendance=attendance%>
               <tr>
+                <td class="id" style="display:none">
+                  <%= attendance.id%>
+                </td>
                 <td>
-                  <button class="button is-primary">編集</button>
+                  <%= link_to "編集", edit_attendance_path(id:attendance.id) ,class:"button is-primary"%>
                 </td>
                 <td>
                   出勤

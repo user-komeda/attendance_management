@@ -1,7 +1,6 @@
 const startButton = document.getElementById('startTime')
 const endButton = document.getElementById('endTime')
-const startTime = document.querySelectorAll('.start-time')
-const test = startTime[startTime.length - 1].textContent
+
 // const endDefaultTime=document.getElementById()
 startButton.onclick = () => {
   const date = new Date()
@@ -21,22 +20,46 @@ startButton.onclick = () => {
   sendRequest(data)
 }
 endButton.onclick = () => {
+  const startTime = document.querySelectorAll('.start-time')
+  const test = startTime[startTime.length - 1].textContent
+
   const date = new Date()
   const endTime = createEndTime(date)
-  console.log(startTime)
+  const id = document.querySelectorAll('.id')
+  const idText = id[id.length - 1].textContent.trim()
+
   const data = {
-    attendances_time: '8:00',
-    date: createDate(date),
-    start_time: test,
+    id: idText,
+    // attendances_time: '8:00',
+    // date: createDate(date),
+    // start_time: test,
     end_time: endTime,
-    end_default_time: '19:00',
-    rest_time: '01:00',
-    actual_time: diffTime(test, endTime),
-    over_time: '02:00',
-    attendances_flag: true
+    // end_default_time: '19:00',
+    // rest_time: '01:00',
+    actual_time: diffTime(test, endTime)
+    // over_time: '02:00',
+    // attendances_flag: true
   }
   console.log(diffTime(test, endTime))
-  sendRequest(data)
+  const token = document
+    .querySelector('meta[name="csrf-token"]')
+    .getAttribute('content')
+  const headers = {
+    'X-CSRF-Token': token
+  }
+
+  axios
+    .put(`http://localhost:3000/users/4/attendances/${idText}`, data, {
+      headers: headers
+    })
+
+    .then(() => {
+      location.reload()
+    })
+
+    .catch(err => {
+      console.log('err:', err)
+    })
 }
 
 const sendRequest = data => {
@@ -93,7 +116,18 @@ const diffTime = (start_time, end_time) => {
     const startMinute = Number(start_time.trim().substr(3, 2))
     const endHour = Number(end_time.trim().substr(1, 1)) * 60
     const endMinute = Number(end_time.trim().substr(3, 2))
-    return (endHour + endMinute - (startHour + startMinute)) / 60
+    const actualTime =
+      (endHour + endMinute - (startHour + startMinute)) / 60 + 1.35
+
+    console.log(actualTime)
+    const text = actualTime.toString().split('.')[1]
+    return (
+      Math.trunc(Math.floor((actualTime * 100) / 100))
+        .toString()
+        .padStart(2, 0) +
+      ':' +
+      text
+    )
   }
 }
 
