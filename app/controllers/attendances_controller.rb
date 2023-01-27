@@ -1,31 +1,57 @@
+# AttendancesControllerF
 class AttendancesController < ApplicationController
   before_action :authenticate_user!
 
   def index
     @user = current_user
-    @attendances = Attendance.find_by(user_id: @user.id)
+
+    @attendances = Attendance.where(user_id: @user.id)
+
+    @attendances
   end
 
-  def new; end
+  def edit
+    @attendances = Attendance.find(params[:id])
+  end
 
   def create
-    @attendance = Attendance.new(params[:attendance])
-    @attendance.user_id = current_user.id
+    @attendance = current_user.attendance.build(user_params)
+
     if @attendance.save
-      redirect_to @attendance
+
+      redirect_to action: :index
+
     else
-      render 'new'
+
+      render 'index'
+
     end
   end
 
-  def edit; end
-
   def update
-    @attendances = Attendance.find('4')
-    if @attendance.save
-      redirect_to @attendance
+    @attendances = Attendance.find(params[:id])
+
+    @attendances.assign_attributes(update_parameters)
+
+    if @attendances.save
+
+      redirect_to action: :index, status: :see_other
+
     else
-      render 'edit'
+
+      render 'index'
+
     end
+  end
+
+  def user_params
+    params.require(:attendance).permit(
+      :id, :start_time, :end_time, :attendances_time, :date, :end_default_time,
+      :rest_time, :actual_time, :overtime, :attendances_flag
+    )
+  end
+
+  def update_parameters
+    params.require(:attendance).permit(:end_time, :actual_time)
   end
 end

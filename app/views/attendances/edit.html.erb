@@ -1,0 +1,35 @@
+<section >
+  <%= form_with class: "box", model: @attendances,url:@attendances, local: true do |form|%>
+    <div class="field">
+      <label class="label">勤務時間</label>
+      <div class="field has-addons">
+        <div class="control">
+          <a class="button is-static">開始時間</a>
+        </div>
+        <div class="control">
+          <%= form.text_field :start_time%>
+        </div>
+        <div class="control">
+          <a class="button is-static">終了時間</a>
+        </div>
+        <div class="control">
+          <%= form.text_field :end_time,value: @attendances.end_time&.strftime("%H:%M")  %>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">休憩時間</label>
+      <div class="field has-addons">
+        <div class="control">
+          <a class="button is-static">休憩時間</a>
+        </div>
+        <div class="control">
+          <%= form.text_field :rest_time, value: @attendances
+.rest_time&.strftime("%H:%M")%>
+        </div>
+      </div>
+      <%= form.submit%>
+    </div>
+  </div>
+<% end %>
+</section>
