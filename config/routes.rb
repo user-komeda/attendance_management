@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   }
 
-  resources :attendances, path: 'users/:user_id/attendances', except: [:show, :new, :destroy]
+  resources :attendances, path: 'users/:user_id/attendances', except: %i[show new destroy]
 
   root 'home#index'
+
+  get '/users/:id/exportCsv', to: 'export_csv#export_csv'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

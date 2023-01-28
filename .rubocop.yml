@@ -28,3 +28,13 @@ Style/FrozenStringLiteralComment:
 #Windowsの改行コードを変更
 Style/EndOfLine:
   EnforcedStyle: crlf
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 230
+Metrics/MethodLength:
+  Max: 25
+Metrics/PerceivedComplexity:
+  Max: 15
+Metrics/CyclomaticComplexity:
+  Max: 15
