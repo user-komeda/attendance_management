@@ -10,14 +10,14 @@ class ExportCsvController < ApplicationController
         columuns_value = [
           a.id,
           a.user_id,
-          a.attendance_time,
+          a.attendance_time&.strftime('%H:%M'),
           a.date,
-          a.start_time,
-          a.end_time,
-          a.end_default_time,
-          a.rest_time,
-          a.actual_time,
-          a.overtime,
+          a.start_time&.strftime('%H:%M'),
+          a.end_time&.strftime('%H:%M'),
+          a.end_default_time&.strftime('%H:%M'),
+          a.rest_time&.strftime('%H:%M'),
+          a.actual_time&.strftime('%H:%M'),
+          a.overtime&.strftime('%H:%M'),
           a.approval_flag
         ]
         csv << columuns_value
