@@ -1,5 +1,6 @@
 const startButton = document.getElementById('startTime')
 const endButton = document.getElementById('endTime')
+const csvExportbutton = document.getElementById('csvExport')
 
 // const endDefaultTime=document.getElementById()
 startButton.onclick = () => {
@@ -55,6 +56,27 @@ endButton.onclick = () => {
 
     .then(() => {
       location.reload()
+    })
+
+    .catch(err => {
+      console.log('err:', err)
+    })
+}
+
+csvExportbutton.onclick = () => {
+  axios
+    .get(`http://localhost:3000/users/4/exportCsv`, { responseType: 'blob' })
+
+    .then(res => {
+      console.log(res)
+      const name = res.headers['content-disposition']
+      const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/ // 正規表現でfilenameを抜き出す
+      const matches = filenameRegex.exec(name)
+      console.log(matches[1].trim().slice(1).slice(0, -1))
+
+      const blob = new Blob([res.data], { type: res.data.type })
+      saveAs(blob, matches[1].trim().slice(1).slice(0, -1))
+      // location.reload()
     })
 
     .catch(err => {

@@ -37,7 +37,7 @@
         </span>
         <button class="button is-link ml-5" id="startTime">出勤</button>
         <button class="button is-link" id="endTime">退勤</button>
-        <button class="button is-primary ml-5">csv出力</button>
+        <button class="button is-primary ml-5" id="csvExport">csv出力</button>
         <button class="button is-primary" >excell出力</button>
       </div>
       <div class="block">
@@ -124,4 +124,5 @@
     </div>
   </div>
 </section>
+<%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" %>
 <%= javascript_include_tag "abc.js" %>
