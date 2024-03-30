@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/users/:id/exportCsv', to: 'export_csv#export_csv'
+  get '/users/:id/exportXlsx', to: 'export_xlsx#export_xlsx'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
