@@ -1,4 +1,4 @@
-<%@attendances.inspect%>
+<% @attendances.inspect %>
 <section class="section">
   <div>
     <h2 class="h2">勤怠テーブル</h2>
@@ -26,98 +26,98 @@
         </div>
       </div>
     </div>
-    <div class="column" >
+    <div class="column">
       <div class="block" style="width:100%">
         <span class="icon">
           <i class="fas fa-arrow-left is-size-3"></i>
         </span>
         <span class="is-size-3">2023/1/10</span>
         <span class="icon">
-          <i class="fas fa-arrow-right is-size-3" ></i>
+          <i class="fas fa-arrow-right is-size-3"></i>
         </span>
         <button class="button is-link ml-5" id="startTime">出勤</button>
         <button class="button is-link" id="endTime">退勤</button>
         <button class="button is-primary ml-5" id="csvExport">csv出力</button>
-        <button class="button is-primary" >excell出力</button>
+        <button class="button is-primary" id="xlsxExport">excell出力</button>
       </div>
       <div class="block">
-        <table class="table table-striped"  style="width:100%"
->
+        <table class="table table-striped" style="width:100%"
+        >
           <thead>
-            <tr>
-              <th>作業月</th>
-              <th>所定時間</th>
-              <th>稼働時間</th>
-              <th>時間外</th>
-              <th>稼働日数</th>
-              <th>給与</th>
-              <th>月の承認</th>
-            </tr>
+          <tr>
+            <th>作業月</th>
+            <th>所定時間</th>
+            <th>稼働時間</th>
+            <th>時間外</th>
+            <th>稼働日数</th>
+            <th>給与</th>
+            <th>月の承認</th>
+          </tr>
           </thead>
           <tbody>
-            <tr></tr>
+          <tr></tr>
           </tbody>
         </table>
       </div>
       <div class="block">
         <table class="table" style="width:100%"
->
+        >
           <thead>
-            <tr>
-              <th>編集</th>
-              <th>区分</th>
-              <th>日付</th>
-              <th>開始</th>
-              <th>所定終了</th>
-              <th>終了</th>
-              <th>休憩</th>
-              <th>実働</th>
-              <th>時間外</th>
-              <th>承認</th>
-              <th>日報</th>
-            </tr>
+          <tr>
+            <th>編集</th>
+            <th>区分</th>
+            <th>日付</th>
+            <th>開始</th>
+            <th>所定終了</th>
+            <th>終了</th>
+            <th>休憩</th>
+            <th>実働</th>
+            <th>時間外</th>
+            <th>承認</th>
+            <th>日報</th>
+          </tr>
           </thead>
           <tbody>
-            <% @attendances&.each do |attendance| %>
-              <% @attendance=attendance%>
-              <tr>
-                <td class="id" style="display:none">
-                  <%= attendance.id%>
-                </td>
-                <td>
-                  <%= link_to "編集", edit_attendance_path(id:attendance.id) ,class:"button is-primary"%>
-                </td>
-                <td>
-                  出勤
-                </td>
-                <td>
-                  <%= attendance.date%>
-                </td>
-                <td class="start-time">
-                  <%= attendance.start_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <%= attendance.end_default_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <%= attendance.end_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <%= attendance.rest_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <%= attendance.actual_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <%= attendance.rest_time&.strftime("%H:%M")%>
-                </td>
-                <td>
-                  <button class="button is-primary">承認依頼</button>
-                </td>
-                <td>
-                </td>
-              </tr>
-            <% end %>
+          <% @attendances&.each do |attendance| %>
+            <% @attendance = attendance %>
+            <tr>
+              <td class="id" style="display:none">
+                <%= attendance.id %>
+              </td>
+              <td>
+                <%= link_to "編集", edit_attendance_path(id: attendance.id), class: "button is-primary" %>
+              </td>
+              <td>
+                出勤
+              </td>
+              <td>
+                <%= attendance.date %>
+              </td>
+              <td class="start-time">
+                <%= attendance.start_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= attendance.end_default_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= attendance.end_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= attendance.rest_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= attendance.actual_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <%= attendance.rest_time&.strftime("%H:%M") %>
+              </td>
+              <td>
+                <button class="button is-primary">承認依頼</button>
+              </td>
+              <td>
+              </td>
+            </tr>
+          <% end %>
           </tbody>
         </table>
       </div>
