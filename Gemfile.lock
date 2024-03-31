@@ -143,6 +143,7 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     language_server-protocol (3.17.0.3)
+    lefthook (1.6.7)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -174,9 +175,6 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
-    pluginator (1.5.0)
-    pre-commit (0.40.0)
-      pluginator (~> 1.5)
     public_suffix (5.0.4)
     puma (5.6.8)
       nio4r (~> 2.0)
@@ -357,7 +355,7 @@ DEPENDENCIES
   devise
   htmlbeautifier
   jbuilder (~> 2.7)
-  pre-commit
+  lefthook
   puma (~> 5.0)
   pundit
   rack-mini-profiler (~> 2.0)

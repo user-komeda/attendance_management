@@ -53,7 +53,7 @@ group :development do
   gem 'rubocop-rails'
   gem 'solargraph'
   gem 'solargraph-rails'
-  gem 'pre-commit'
+  gem 'lefthook'
 end
 
 group :test do
