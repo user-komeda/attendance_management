@@ -7,7 +7,7 @@ class ExportXlsxController < ApplicationController
   private
 
   def create_data
-    data_list = get_data
+    data_list = Attendance.all
     work_book = RubyXL::Workbook.new
     sheet = work_book[0]
     header_list = Attendance.column_names
@@ -29,9 +29,5 @@ class ExportXlsxController < ApplicationController
       sheet.add_cell(i + 1, 10, d.approval_flag)
     end
     work_book
-  end
-
-  def get_data
-    @attendances = Attendance.all
   end
 end

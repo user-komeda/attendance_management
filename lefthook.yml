@@ -22,13 +22,17 @@ pre-commit:
       tags: backend style
       glob: "*.rb"
       exclude: '(^|/)(application|routes)\.rb$'
-      run: bundle exec rubocop
-#    rails_best_practices:
-#      tags: backend style
-#      glob: "*.rb"
-#      exclude: '(^|/)(application|routes)\.rb$'
-#      run: bundle exec rails_best_practices
-
+      run: bundle exec rubocop --force-exclusion {all_files}
+    rails_best_practices:
+      tags: backend style
+      glob: "*.rb"
+      exclude: '(^|/)(application|routes)\.rb$'
+      run: bundle exec rails_best_practices
+    brakeman:
+      tags: backend style
+      glob: "*.rb"
+      exclude: '(^|/)(application|routes)\.rb$'
+      run: bundle exec rails_best_practices
 #     govet:
 #       tags: backend style
 #       files: git ls-files -m
