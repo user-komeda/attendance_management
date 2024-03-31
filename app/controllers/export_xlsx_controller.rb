@@ -1,5 +1,4 @@
 class ExportXlsxController < ApplicationController
-
   def export_xlsx
     send_data(create_data.stream.read, filename: 'attendance.xlsx')
   end
@@ -30,8 +29,6 @@ class ExportXlsxController < ApplicationController
     end
     work_book
   end
-
-  private
 
   def get_data
     @attendances = Attendance.all
