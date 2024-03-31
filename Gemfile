@@ -46,6 +46,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
   gem 'brakeman', require: false
   gem 'htmlbeautifier'
+  gem 'lefthook'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rails_best_practices'
   gem 'reek'
