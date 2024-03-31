@@ -1,3 +1,4 @@
+# ExportXlsxController
 class ExportXlsxController < ApplicationController
   def export_xlsx
     send_data(create_data.stream.read, filename: 'attendance.xlsx')
