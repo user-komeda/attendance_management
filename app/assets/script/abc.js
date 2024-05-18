@@ -2,13 +2,15 @@ const startButton = document.getElementById('startTime')
 const endButton = document.getElementById('endTime')
 const csvExportbutton = document.getElementById('csvExport')
 const excellExportButton = document.getElementById('xlsxExport')
-
+const id = Number(document.getElementById("dateId").textContent) + new Date().getDate() - 1
+console.log(new Date().getDate())
 // const endDefaultTime=document.getElementById()
 startButton.onclick = () => {
     const date = new Date()
     const startTime = createStartTime(date)
     date.getHours()
     const data = {
+        id: id,
         attendances_time: '8:00',
         date: createDate(date),
         start_time: startTime,

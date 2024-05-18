@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   }
 
-  resources :attendances, path: 'users/:user_id/attendances', except: %i[show new destroy]
+  resources :attendances, path: 'users/:user_id/attendances', except: %i[show destroy]
 
   root 'home#index'
 
