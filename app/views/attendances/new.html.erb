@@ -2,6 +2,9 @@
   <%= form_with class: "box", model: @attendances, url: @attendances, local: true do |form| %>
     <div class="field">
       <label class="label">勤務時間</label>
+      <%= form.hidden_field :id, value: params[:id] %>
+      <%= form.hidden_field :id, value: params[:id] %>
+      <%= form.hidden_field :id, value: params[:id] %>
       <div class="field has-addons">
         <div class="control">
           <a class="button is-static">開始時間</a>

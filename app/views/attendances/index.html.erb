@@ -1,8 +1,10 @@
-<% @attendances.inspect %>
 <section class="section">
   <div>
     <h2 class="h2">勤怠テーブル</h2>
   </div>
+  <span id="dateId">
+    <%= @dateindex + 1 %>
+  </span>
   <div class="columns" style="align-items:normal">
     <div class="column is-one-quarter">
       <div class="card">
@@ -78,38 +80,45 @@
           </tr>
           </thead>
           <tbody>
-          <% @attendances&.each do |attendance| %>
-            <% @attendance = attendance %>
+          <p>
+
+          </p>
+          <% @daylist.each.with_index(1) do |day, index| %>
+            <% attendance = @attendances.detect { |attendance| attendance.id == @dateindex + index } %>
             <tr>
               <td class="id" style="display:none">
-                <%= attendance.id %>
+                <%= @dateindex + index %>
               </td>
               <td>
-                <%= link_to "編集", edit_attendance_path(id: attendance.id), class: "button is-primary" %>
+                <% if attendance %>
+                  <%= link_to "編集", edit_attendance_path(id: @dateindex + index), class: "button is-primary" %>
+                <% else %>
+                  <%= link_to "作成", new_attendance_path(id: @dateindex + index), class: "button is-primary" %>
+                <% end %>
               </td>
               <td>
                 出勤
               </td>
               <td>
-                <%= attendance.date %>
+                <%= !attendance || !attendance.date ? day : attendance.date %>
               </td>
               <td class="start-time">
-                <%= attendance.start_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.start_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
-                <%= attendance.end_default_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.end_default_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
-                <%= attendance.end_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.end_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
-                <%= attendance.rest_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.rest_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
-                <%= attendance.actual_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.actual_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
-                <%= attendance.rest_time&.strftime("%H:%M") %>
+                <%= attendance ? attendance.rest_time&.strftime("%H:%M") : "" %>
               </td>
               <td>
                 <button class="button is-primary">承認依頼</button>

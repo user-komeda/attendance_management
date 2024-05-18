@@ -4,14 +4,22 @@ class AttendancesController < ApplicationController
 
   def index
     @user = current_user
-
     @attendances = Attendance.where(user_id: @user.id)
 
-    @attendances
+    today = Date.current
+    dead_line = Date.new(2022, 6, 22)
+
+    @dateindex = (today - dead_line + 1).to_i
+
+    @daylist = today.all_month.to_a
+  end
+
+  def new
+    @attendances = Attendance.new
   end
 
   def edit
-    @attendances = Attendance.find(params[:id])
+    @attendances = Attendance.find_by(id: params[:id])
   end
 
   def create
@@ -52,6 +60,6 @@ class AttendancesController < ApplicationController
   end
 
   def update_parameters
-    params.require(:attendance).permit(:end_time, :actual_time)
+    params.require(:attendance).permit(:start_time, :rest_time, :end_time, :actual_time)
   end
 end
