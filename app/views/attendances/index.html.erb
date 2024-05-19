@@ -2,8 +2,14 @@
   <div>
     <h2 class="h2">勤怠テーブル</h2>
   </div>
-  <span id="dateId">
+  <span style="display: none" id="dateId">
     <%= @dateindex + 1 %>
+  </span>
+  <span style="display: none" id="currentDateId">
+    <%= @cuurentdateindex + 1 %>
+  </span>
+  <span id="userId" style="display: none">
+    <%= @user.id %>
   </span>
   <div class="columns" style="align-items:normal">
     <div class="column is-one-quarter">
@@ -30,13 +36,15 @@
     </div>
     <div class="column">
       <div class="block" style="width:100%">
-        <span class="icon">
+        <span id="left-icon-arrow" class="icon">
           <i class="fas fa-arrow-left is-size-3"></i>
         </span>
-        <span class="is-size-3">2023/1/10</span>
-        <span class="icon">
+        <span id="today" class="is-size-3"><%= @today.strftime("%Y/%m") %></span>
+        <% if @isviewrightarrow %>
+        <span id="right-icon-arrow" class="icon">
           <i class="fas fa-arrow-right is-size-3"></i>
         </span>
+        <% end %>
         <button class="button is-link ml-5" id="startTime">出勤</button>
         <button class="button is-link" id="endTime">退勤</button>
         <button class="button is-primary ml-5" id="csvExport">csv出力</button>

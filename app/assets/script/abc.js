@@ -2,7 +2,11 @@ const startButton = document.getElementById('startTime')
 const endButton = document.getElementById('endTime')
 const csvExportbutton = document.getElementById('csvExport')
 const excellExportButton = document.getElementById('xlsxExport')
-const id = Number(document.getElementById("dateId").textContent) + new Date().getDate() - 1
+const leftIconArrow = document.getElementById("left-icon-arrow")
+const rightIconArrow = document.getElementById("right-icon-arrow")
+const id = Number(document.getElementById("currentDateId").textContent) + new Date().getDate() - 1
+const userId = document.getElementById("userId").textContent.trim()
+console.log(userId)
 console.log(new Date().getDate())
 // const endDefaultTime=document.getElementById()
 startButton.onclick = () => {
@@ -29,11 +33,9 @@ endButton.onclick = () => {
 
     const date = new Date()
     const endTime = createEndTime(date)
-    const id = document.querySelectorAll('.id')
-    const idText = id[id.length - 1].textContent.trim()
 
     const data = {
-        id: idText,
+        id: id,
         // attendances_time: '8:00',
         // date: createDate(date),
         // start_time: test,
@@ -53,7 +55,7 @@ endButton.onclick = () => {
     }
 
     axios
-        .put(`http://localhost:3000/users/4/attendances/${idText}`, data, {
+        .put(`http://localhost:3000/users/${userId}/attendances/${id}`, data, {
             headers: headers
         })
 
@@ -68,7 +70,7 @@ endButton.onclick = () => {
 
 csvExportbutton.onclick = () => {
     axios
-        .get(`http://localhost:3000/users/4/exportCsv`, {responseType: 'blob'})
+        .get(`http://localhost:3000/users/${userId}/exportCsv`, {responseType: 'blob'})
 
         .then(res => {
             console.log(res)
@@ -106,6 +108,30 @@ excellExportButton.onclick = () => {
         .catch(err => {
             console.log('err:', err)
         })
+}
+
+leftIconArrow.onclick = () => {
+    const dateString = document.getElementById("today").textContent
+    const newDate = new Date(dateString)
+    newDate.setMonth(newDate.getMonth() - 1)
+
+    const formatedDate = newDate.toLocaleDateString("ja-JP", {
+        year: "numeric", month: "2-digit"
+    })
+    location.href = `http://localhost:3000/users/${userId}/attendances?date=${formatedDate}`
+}
+
+if (rightIconArrow) {
+    rightIconArrow.onclick = () => {
+        const dateString = document.getElementById("today").textContent
+        const newDate = new Date(dateString)
+        newDate.setMonth(newDate.getMonth() + 1)
+
+        const formatedDate = newDate.toLocaleDateString("ja-JP", {
+            year: "numeric", month: "2-digit"
+        })
+        location.href = `http://localhost:3000/users/${userId}/attendances?date=${formatedDate}`
+    }
 }
 
 const sendRequest = data => {

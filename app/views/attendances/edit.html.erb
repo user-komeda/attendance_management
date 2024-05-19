@@ -1,5 +1,5 @@
 <section>
-  <%= form_with class: "box", model: @attendances, url: @attendances, local: true do |form| %>
+  <%= form_with class: "box", model: @attendances, url: attendance_path, local: true do |form| %>
     <div class="field">
       <label class="label">勤務時間</label>
       <div class="field has-addons">
