@@ -5,13 +5,18 @@ class AttendancesController < ApplicationController
   def index
     @user = current_user
     @attendances = Attendance.where(user_id: @user.id)
+    paramdate = params[:date]
 
-    today = Date.current
+    @today = paramdate ? paramdate.to_date : Date.current
     dead_line = Date.new(2022, 6, 22)
 
-    @dateindex = (today - dead_line + 1).to_i
+    @dateindex = (@today.beginning_of_month - dead_line.beginning_of_month + 1).to_i
 
-    @daylist = today.all_month.to_a
+    @cuurentdateindex = (Date.current.beginning_of_month - dead_line.beginning_of_month + 1).to_i
+
+    @isviewrightarrow = @today.month - Date.current.month <= 1 || @today.year < Date.current.year
+
+    @daylist = @today.all_month.to_a
   end
 
   def new
@@ -19,12 +24,11 @@ class AttendancesController < ApplicationController
   end
 
   def edit
-    @attendances = Attendance.find_by(id: params[:id])
+    @attendances = Attendance.find(params[:id])
   end
 
   def create
     @attendance = current_user.attendance.build(user_params)
-
     if @attendance.save
 
       redirect_to action: :index
