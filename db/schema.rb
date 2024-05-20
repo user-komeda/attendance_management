@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_05_124337) do
+ActiveRecord::Schema.define(version: 2024_05_20_042020) do
 
   create_table "attendances", force: :cascade do |t|
     t.string "user_id"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 2023_08_05_124337) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "user_configs", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "default_start_time"
+    t.datetime "default_end_time"
+    t.datetime "default_rest_time"
+    t.datetime "default_total_working_hours"
+    t.datetime "default_monthly_salary"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_user_configs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -17,9 +17,12 @@
 @import './header.scss';
 
 html {
-  height: 100%;
-}
-body {
   background-color: #f1f7fc;
-  height: 100%;
+}
+
+body {
+}
+
+hr {
+  margin: 0.5rem;
 }

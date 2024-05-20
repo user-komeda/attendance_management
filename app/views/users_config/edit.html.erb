@@ -1,0 +1,109 @@
+<div class="container">
+  <section class="has-background-white section">
+    <%= form_with model: @config, url: '/users/5/config', local: true do |form| %>
+      <h2 class="h2 title">個人設定を編集</h2>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column is-half field is-inline-block-desktop">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Alex">
+            </div>
+          </div>
+
+          <div class="column field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Alex">
+            </div>
+          </div>
+          <div class="column field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Alex">
+            </div>
+          </div>
+          <div class="column field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Alex">
+            </div>
+          </div>
+          <div class="column field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column is-half field is-inline-block-desktop">
+            <label class="label">First Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Alex">
+            </div>
+          </div>
+
+          <div class="column field is-inline-block-desktop">
+            <label class="label">Last Name</label>
+            <div class="control">
+              <input class="input" type="text" placeholder="e.g Smith">
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= link_to '戻る', attendances_path, class: 'button' %>
+      <%= form.submit %>
+    <% end %>
+  </section>
+</div>

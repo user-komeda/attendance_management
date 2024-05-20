@@ -29,3 +29,11 @@ Attendance.create(
 
   approval_flag: true
 )
+UserConfig.create(
+  user_id: '3',
+  default_start_time: Time.now,
+  default_end_time: Time.now,
+  default_rest_time: Time.now,
+  default_total_working_hours: Time.now,
+  default_monthly_salary: Time.now
+)

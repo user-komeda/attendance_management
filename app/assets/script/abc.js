@@ -43,10 +43,10 @@ endButton.onclick = () => {
         // end_default_time: '19:00',
         // rest_time: '01:00',
         actual_time: diffTime(test, endTime)
+        // actual_time: '08:00'
         // over_time: '02:00',
         // attendances_flag: true
     }
-    console.log(diffTime(test, endTime))
     const token = document
         .querySelector('meta[name="csrf-token"]')
         .getAttribute('content')

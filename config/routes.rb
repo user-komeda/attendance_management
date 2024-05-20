@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
 
     registrations: 'users/registrations',
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   }
 
   resources :attendances, path: 'users/:user_id/attendances', except: %i[show destroy]
+  resource :user_config, path: 'users/:user_id/config', except: %i[index new show destroy], controller: "users_config"
 
   root 'home#index'
 
