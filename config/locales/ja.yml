@@ -131,6 +131,17 @@ ja:
       send_instructions: アカウントのロック解除方法を数分以内にメールでご連絡します。
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
+  enums:
+    user_config:
+      gender:
+        male: 男性
+        female: 女性
+        other: その他
+      employment_status:
+        regular_employee: 正社員
+        contract_employee: 契約社員
+        part_time_job: アルバイト
+
   errors:
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。

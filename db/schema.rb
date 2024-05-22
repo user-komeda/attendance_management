@@ -41,11 +41,16 @@ ActiveRecord::Schema.define(version: 2024_05_20_042020) do
 
   create_table "user_configs", force: :cascade do |t|
     t.integer "user_id"
+    t.string "name"
     t.datetime "default_start_time"
     t.datetime "default_end_time"
     t.datetime "default_rest_time"
     t.datetime "default_total_working_hours"
-    t.datetime "default_monthly_salary"
+    t.integer "default_normal_hourly_rate"
+    t.integer "default_late_night"
+    t.integer "default_monthly_salary"
+    t.integer "employment_status"
+    t.integer "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_configs_on_user_id"
