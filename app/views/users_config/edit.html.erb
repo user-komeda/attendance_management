@@ -1,0 +1,110 @@
+<div class="container">
+  <section class="has-background-white section">
+    <%= form_with model: @config, url: '/users/5/config', local: true do |form| %>
+      <h2 class="h2 title">個人設定を編集</h2>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column is-half field is-inline-block-desktop">
+            <%= form.label :name, '名前', class: 'label' %>
+            <div class="control">
+              <%= form.text_field :name, class: "input" %>
+            </div>
+            <hr/>
+          </div>
+          <div class="column field is-inline-block-desktop">
+            <%= form.label :default_normal_hourly_rate, '通常時給', class: 'label' %>
+            <div class="control">
+              <%= form.text_field :default_normal_hourly_rate, class: "input" %>
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <div class="is-flex">
+              <%= label_tag "user_config_default_start_time_4i", "開始:時間", class: 'label flex_config' %>
+              <%= label_tag 'user_config_default_start_time_5i', "開始:分", class: 'label flex_config' %>
+            </div>
+            <div class="control is-flex time">
+              <%= form.time_select :default_start_time, { time_separator: '', title: "aaa" }, { class: 'select input_select flex_config', title: "aaa" } %>
+            </div>
+            <hr/>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <%= form.label :default_late_night, '深夜時給', class: 'label' %>
+            <div class="control">
+              <%= form.text_field :default_late_night, class: "input" %>
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <div class="is-flex">
+              <%= label_tag "user_config_default_end_time_4i", "終了:時間", class: 'label flex_config' %>
+              <%= label_tag 'user_config_default_end_time_5i', "終了:分", class: 'label flex_config' %>
+            </div>
+            <div class="control is-flex time">
+              <%= form.time_select :default_end_time, { time_separator: '', title: "aaa" }, { class: 'select input_select flex_config', title: "aaa" } %>
+            </div>
+            <hr/>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <%= form.label :default_monthly_salary, '月給', class: 'label' %>
+            <div class="control">
+              <%= form.text_field :default_monthly_salary, class: "input" %>
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column field is-inline-block-desktop">
+            <div class="is-flex">
+              <%= label_tag "user_config_default_rest_time_4i", "休憩:時間", class: 'label flex_config' %>
+              <%= label_tag 'user_config_default_rest_time_5i', "休憩:分", class: 'label flex_config' %>
+            </div>
+            <div class="control is-flex time">
+              <%= form.time_select :default_rest_time, { time_separator: '', title: "aaa" }, { class: 'select input_select flex_config', title: "aaa" } %>
+            </div>
+            <hr/>
+          </div>
+          <div class="column is-half field is-inline-block-desktop">
+            <%= form.label :employment_status, '雇用形態', class: 'label' %>
+            <div class="control">
+              <%= form.select :employment_status, options_for_select(UserConfig.employment_statuses.keys.map { |k| [I18n.t("enums.user_config.employment_status.#{k}"), k] }, selected: @config.employment_status || nil), {}, { class: "select input_select" } %>
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="columns">
+          <div class="column is-half field is-inline-block-desktop">
+            <%= form.label :default_total_working_hours, '月の労働時間', class: 'label' %>
+            <div class="control">
+              <%= form.text_field :default_total_working_hours, class: "input" %>
+            </div>
+            <hr/>
+          </div>
+          <div class="column field is-inline-block-desktop">
+            <%= form.label :gender, '性別', class: 'label' %>
+            <div class="control">
+              <%= form.select :gender, options_for_select(UserConfig.genders_i18n.keys.map { |k| [I18n.t("enums.user_config.gender.#{k}"), k] }, selected: @config.gender), {}, { class: "select input_select" } %>
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+      <div class="has-text-right">
+        <%= link_to '戻る', attendances_path, class: 'button is-dark' %>
+        <%= form.submit '設定の更新', class: 'button is-success' %>
+      </div>
+    <% end %>
+  </section>
+</div>

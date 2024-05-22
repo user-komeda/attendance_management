@@ -12,7 +12,7 @@
     <%= @user.id %>
   </span>
   <div class="columns" style="align-items:normal">
-    <div class="column is-one-quarter">
+    <div class="column is-one-third">
       <div class="card">
         <div class="card-image">
           <figure class="image is-4by3">
@@ -22,16 +22,45 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">登録画面</p>
+              <p class="title is-4">田中隆</p>
             </div>
           </div>
           <div class="content">
-            <p>アカウントを新しく登録するための画面です</p>
-            <a href="#">#css</a> <a href="#">#responsive</a>
+            <span id="user_email">shigoto922@gmail.com</span>
             <br>
-            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            <span id="sex">男性</span>
+            <div class="mt-3 ui divided selection list">
+              <div class="mb-2 is-flex-desktop">
+                <div class="p-1 has-background-info has-text-white">開始時間</div>
+                <span class="ml-4" id="ordinaly_start_time">09:00</span>
+              </div>
+              <hr/>
+              <div class="mb-2 is-flex-desktop">
+                <div class="p-1 has-background-info has-text-white">終了時間</div>
+                <span class="ml-4" id="ordinaly_end_time">17:30</span>
+              </div>
+              <hr/>
+              <div class="mb-2 is-flex-desktop">
+                <div class="p-1 has-background-info has-text-white">休憩時間</div>
+                <span class="ml-4" id="ordinaly_lunch_time">01:00</span>
+              </div>
+              <hr/>
+              <div class="mb-2 is-flex-desktop">
+                <div class="p-1 has-background-info has-text-white">月の労働時間</div>
+                <span class="ml-4" id="month_preset_time">150時間</span>
+              </div>
+              <hr/>
+              <div class="mb-2 is-flex-desktop">
+                <div class="p-1 has-background-info has-text-white">月給</div>
+                <span class="ml-4" id="salary_setting">200000</span>円
+              </div>
+              <hr/>
+            </div>
           </div>
         </div>
+        <footer class="card-footer">
+          <%= link_to "個人設定を変更する", edit_user_config_path, class: 'mx-5 mb-2 card-footer-item button is-info' %>
+        </footer>
       </div>
     </div>
     <div class="column">

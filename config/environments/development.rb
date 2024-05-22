@@ -55,10 +55,7 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
 
-    address: '192.168.11.2',
+    address: '192.168.11.3',
     port: '10025',
-
-    authentication: 'login'
-
   }
 end

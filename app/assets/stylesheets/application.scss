@@ -17,9 +17,37 @@
 @import './header.scss';
 
 html {
-  height: 100%;
-}
-body {
   background-color: #f1f7fc;
-  height: 100%;
+}
+
+body {
+}
+
+hr {
+  margin: 0.5rem;
+}
+
+.input_select {
+  font-size: 1rem;
+  width: 100%;
+  background-color: white;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  color: #363636;
+}
+
+.flex_config {
+  display: block;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 0 0.75rem;
+}
+
+.time select:nth-child(even) {
+  margin-left: 0;
+}
+
+.time select:nth-child(odd) {
+  margin-right: 0;
 }
