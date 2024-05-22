@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2024_05_20_042020) do
     t.datetime "default_start_time"
     t.datetime "default_end_time"
     t.datetime "default_rest_time"
-    t.datetime "default_total_working_hours"
+    t.integer "default_total_working_hours"
     t.integer "default_normal_hourly_rate"
     t.integer "default_late_night"
     t.integer "default_monthly_salary"

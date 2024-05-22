@@ -77,7 +77,7 @@
           <div class="column is-half field is-inline-block-desktop">
             <%= form.label :employment_status, '雇用形態', class: 'label' %>
             <div class="control">
-              <%= select_tag :employment_status, options_for_select(UserConfig.employment_statuses.keys.map { |k| [I18n.t("enums.user_config.employment_status.#{k}"), k] }), class: "select input_select" %>
+              <%= form.select :employment_status, options_for_select(UserConfig.employment_statuses.keys.map { |k| [I18n.t("enums.user_config.employment_status.#{k}"), k] }, selected: @config.employment_status || nil), {}, { class: "select input_select" } %>
             </div>
             <hr/>
           </div>
@@ -86,23 +86,25 @@
       <div class="field-group">
         <div class="columns">
           <div class="column is-half field is-inline-block-desktop">
-            <label class="label">月の労働時間</label>
+            <%= form.label :default_total_working_hours, '月の労働時間', class: 'label' %>
             <div class="control">
-              <input class="input" type="text" placeholder="e.g Alex">
+              <%= form.text_field :default_total_working_hours, class: "input" %>
             </div>
             <hr/>
           </div>
           <div class="column field is-inline-block-desktop">
             <%= form.label :gender, '性別', class: 'label' %>
             <div class="control">
-              <%= select_tag :gender, options_for_select(UserConfig.genders_i18n.keys.map { |k| [I18n.t("enums.user_config.gender.#{k}"), k] }), class: "select input_select" %>
+              <%= form.select :gender, options_for_select(UserConfig.genders_i18n.keys.map { |k| [I18n.t("enums.user_config.gender.#{k}"), k] }, selected: @config.gender), {}, { class: "select input_select" } %>
             </div>
             <hr/>
           </div>
         </div>
       </div>
-      <%= link_to '戻る', attendances_path, class: 'button' %>
-      <%= form.submit %>
+      <div class="has-text-right">
+        <%= link_to '戻る', attendances_path, class: 'button is-dark' %>
+        <%= form.submit '設定の更新', class: 'button is-success' %>
+      </div>
     <% end %>
   </section>
 </div>
