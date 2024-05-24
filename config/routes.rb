@@ -12,6 +12,15 @@ Rails.application.routes.draw do
 
   }
 
+  namespace :admin do
+    devise_scope :user do
+      get 'login', to: 'sessions#new'
+      post 'login', to: 'sessions#create'
+      delete 'logout', to: 'sessions#destroy'
+    end
+    root to: 'dashboard#index'
+  end
+
   resources :attendances, path: 'users/:user_id/attendances', except: %i[show destroy]
   resource :user_config, path: 'users/:user_id/config', except: %i[index new show destroy], controller: "users_config"
 
