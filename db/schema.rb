@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_20_042020) do
+ActiveRecord::Schema.define(version: 2024_06_04_004809) do
 
   create_table "attendances", force: :cascade do |t|
     t.string "user_id"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(version: 2024_05_20_042020) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_configs", force: :cascade do |t|
@@ -68,8 +73,10 @@ ActiveRecord::Schema.define(version: 2024_05_20_042020) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.integer "team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -80,4 +87,5 @@ ActiveRecord::Schema.define(version: 2024_05_20_042020) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "users", "teams"
 end
