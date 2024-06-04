@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>AttendanceManagement</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
-    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"%>
-  </head>
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <header class="header">
-      <h2 class="h2">
-        <%= link_to '勤怠管理システム', root_path, class: 'link' %>
-      </h2>
-      <div class="ml-80"></div>
-      <%= link_to  "新規登録", new_user_registration_path, class: 'link'%>
-      <%= link_to  "ログイン", new_user_session_path, class: 'link'%>
-      <%# <%= link_to  "ログアウト", root_path,method: :delete, class: 'link'%>
-      <% if request.path=="/" %>
-      <% else %>
-      <% end %>
-    </div>
-  </header>
-  <div class="container">
-    <%= yield %>
+<head>
+  <title>AttendanceManagement</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+  <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" %>
+</head>
+<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<header class="header">
+  <h2 class="h2">
+    <%= link_to '勤怠管理システム', root_path, class: 'link' %>
+  </h2>
+  <div class="margin-auto mr-5">
+
+    <% if user_signed_in? %>
+      <%= render 'layouts/_is_login_parts' %>
+    <% else %>
+      <%= render 'layouts/_is_not_login_parts' %>
+    <% end %>
   </div>
+</header>
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>
