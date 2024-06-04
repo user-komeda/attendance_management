@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :attendance, dependent: :destroy
   has_one :user_config, dependent: :destroy
+  belongs_to :team, optional: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 end
