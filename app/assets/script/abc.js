@@ -6,6 +6,20 @@ const leftIconArrow = document.getElementById("left-icon-arrow")
 const rightIconArrow = document.getElementById("right-icon-arrow")
 const id = Number(document.getElementById("currentDateId").textContent) + new Date().getDate() - 1
 const userId = document.getElementById("userId").textContent.trim()
+const dropdownTrigger = document.querySelector(".dropdown-trigger")
+
+const button = dropdownTrigger.querySelector("button");
+const dropdown = dropdownTrigger.parentNode;
+
+button.addEventListener("click", () => {
+    dropdown.classList.toggle("is-active");
+});
+
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+        dropdown.classList.remove("is-active");
+    }
+});
 console.log(userId)
 console.log(new Date().getDate())
 // const endDefaultTime=document.getElementById()

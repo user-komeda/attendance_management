@@ -1,0 +1,15 @@
+<div class="dropdown is-right">
+  <div class="dropdown-trigger">
+    <button class="bg-15274 button has-text-grey-dark">
+          <span class="has-text-white icon is-medium">
+            <i class="fas fa-angle-down"></i>
+          </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu">
+    <div class="dropdown-content">
+      <%= link_to "設定", edit_user_config_path, class: "has-text-black dropdown-item" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "has-text-black dropdown-item" %>
+    </div>
+  </div>
+</div>

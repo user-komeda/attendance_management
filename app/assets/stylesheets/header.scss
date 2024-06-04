@@ -2,15 +2,21 @@
   background-color: #15274d;
   height: 50px;
   display: flex;
+
   h2 {
     margin-top: 10px;
   }
+
   a {
     color: #fff;
-    margin-top: 13px;
     margin: 10px 0 10px 10px;
   }
-  .ml-80 {
-    margin-left: 75%;
+
+  .margin-auto {
+    margin: auto;
+  }
+
+  .bg-15274 {
+    background-color: #15274d;
   }
 }
