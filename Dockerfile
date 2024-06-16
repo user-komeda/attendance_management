@@ -1,15 +1,26 @@
 FROM almalinux:minimal
 
 RUN mkdir /app
+RUN mkdir /tmp_build
 
 # Rails app lives here
-WORKDIR /app
-ENv NODE_OPTIONS --openssl-legacy-provider
+WORKDIR /tmp_build
+ENV NODE_OPTIONS --openssl-legacy-provider
 # Set production environmen
 
 # Install packages needed to build gems
-RUN microdnf -y install ruby ruby-devel make gcc gcc-c++ nodejs
+RUN microdnf -y install tar make gcc gcc-c++ zlib-devel openssl-devel readline-devel libffi-devel nodejs
 #RUN microdnf module enable nodejs:20
+
+RUN curl -O https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.6.tar.gz
+
+RUN tar zxvf ruby-3.1.6.tar.gz
+
+RUN cd /tmp_build/ruby-3.1.6 && ./configure && make && make install
+
+WORKDIR /app
+
+RUN rm -rf /tmp_build
 RUN gem install bundler
 RUN npm install --global yarn
 COPY Gemfile /app/Gemfile
@@ -23,12 +34,10 @@ RUN groupadd -g $GID $GROUPNAME && \
     useradd -m -s /bin/bash -u $UID -g $GID $USERNAME
 COPY . /app
 RUN chown -R application_user:application_user /app/
-RUN chown -R application_user:application_user /usr/share/gems/
-RUN chown -R application_user:application_user /usr/bin/
-RUN chown -R application_user:application_user /usr/lib64/gems/ruby/
-RUN chmod +w /usr/bin/
-RUN chmod +w /usr/share/gems/
-RUN chmod +w /usr/lib64/gems/ruby/
+RUN chown -R application_user:application_user /usr/local/lib
+RUN chown -R application_user:application_user /usr/local/bin/
+RUN chmod +w /usr/local/bin/
+RUN chmod +w /usr/local/lib
 RUN chmod +w /app/
 
 USER $USERNAME
